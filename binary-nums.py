@@ -1,3 +1,19 @@
+def iterate_to_binary(n):
+    if n > 255:
+        return None
+
+    binary_nums = [128, 64, 32, 16, 8, 4, 2, 1]
+    binary_n = []
+
+    for num in binary_nums:
+        if n//num:
+            binary_n.append(1)
+            n -= num
+        else:
+            binary_n.append(0)
+
+    return binary_n
+
 def convert_to_binary(n):
     """long form"""
 
@@ -50,3 +66,4 @@ def convert_to_binary(n):
 
 n = 202
 print(convert_to_binary(n))
+print(iterate_to_binary(n))
