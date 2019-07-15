@@ -1,4 +1,35 @@
+def recurse_to_binary(
+    n, 
+    binary_n = [],
+    index = 0,
+    binary_nums = [128, 64, 32, 16, 8, 4, 2, 1]):
+
+    """recursive version"""
+
+    if n > 255: 
+        return None
+    
+    try:
+        if binary_n[7] == 0 or binary_n[7] == 1:
+            return binary_n
+    
+    except:
+        num = binary_nums[index]
+
+        if n//num:
+            n -= num
+            binary_n.append(1)
+        else:
+            binary_n.append(0)
+
+        index += 1
+
+        return recurse_to_binary(n, binary_n, index)
+
+
 def iterate_to_binary(n):
+    """iterative version"""
+
     if n > 255:
         return None
 
@@ -13,6 +44,7 @@ def iterate_to_binary(n):
             binary_n.append(0)
 
     return binary_n
+
 
 def convert_to_binary(n):
     """long form"""
@@ -64,6 +96,7 @@ def convert_to_binary(n):
     
     return binary_n
 
-n = 202
+n = 78
 print(convert_to_binary(n))
 print(iterate_to_binary(n))
+print(recurse_to_binary(n))
