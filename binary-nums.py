@@ -1,19 +1,25 @@
-def recurse_to_binary(
-    n, 
-    binary_n = [],
-    index = 0,
-    binary_nums = [128, 64, 32, 16, 8, 4, 2, 1]):
+def iterate_from_binary(n):
+    """iterate from binary to ascii"""
 
-    """recursive version"""
+    list_n = list(str(n))
+    binary_nums = from_binary_convert_list(len(list_n)-1)
+    ascii_n = 0
+    index = 0
 
-    if n > 255: 
-        return None
-    
+    for num in list_n:
+        if num == '1':
+            ascii_n += binary_nums[index]
+        index += 1
+
+    return ascii_n
+
+
+def recurse_to_binary(n, binary_nums, binary_n = [], index = 0):
+    """recursive version to find binary of ASCII decimal number
+    Use to_binary_convert_list fn for binary_nums parameter
+    """
+
     try:
-        if binary_n[7] == 0 or binary_n[7] == 1:
-            return binary_n
-    
-    except:
         num = binary_nums[index]
 
         if n//num:
@@ -24,16 +30,16 @@ def recurse_to_binary(
 
         index += 1
 
-        return recurse_to_binary(n, binary_n, index)
+        return recurse_to_binary(n, binary_nums, binary_n, index)
+    
+    except:
+        return int(stringify_list(binary_n))
 
 
 def iterate_to_binary(n):
     """iterative version"""
 
-    if n > 255:
-        return None
-
-    binary_nums = [128, 64, 32, 16, 8, 4, 2, 1]
+    binary_nums = to_binary_convert_list(n)
     binary_n = []
 
     for num in binary_nums:
@@ -43,7 +49,7 @@ def iterate_to_binary(n):
         else:
             binary_n.append(0)
 
-    return binary_n
+    return stringify_list(binary_n)
 
 
 def convert_to_binary(n):
@@ -94,9 +100,52 @@ def convert_to_binary(n):
         binary_n[7] = 1
         n = n - 1
     
-    return binary_n
+    return int(stringify_list(binary_n))
 
-n = 78
-print(convert_to_binary(n))
-print(iterate_to_binary(n))
-print(recurse_to_binary(n))
+
+def stringify_list(a_list):
+    """helper function to turn results into str"""
+
+    string = ""
+    for char in a_list:
+        string += str(char)
+
+    return string
+
+def to_binary_convert_list(n):
+    """helper function to create binary conversion list as long as needed
+    n = the total sum of the ascii code value
+    """
+
+    conversion_list = []
+    conversion_value = 1
+
+    while conversion_value <= n:
+        conversion_list.insert(0, conversion_value)
+        conversion_value *= 2
+
+    return conversion_list
+
+
+def from_binary_convert_list(n):
+    """helper function to create binary conversion list as long as needed
+    n = length of stringified/listified binary number
+    """
+
+    conversion_list = []
+    conversion_value = 1
+    index = 0
+
+    while index <= n:
+        conversion_list.insert(0, conversion_value)
+        conversion_value *= 2
+        index += 1
+
+    return conversion_list
+
+
+n = int(input('What decimal number would you like to convert to binary? >> '))
+print(recurse_to_binary(n, binary_nums=to_binary_convert_list(n)))
+
+x = int(input('What binary number would you like to convert to decimal? >> '))
+print(iterate_from_binary(x))
