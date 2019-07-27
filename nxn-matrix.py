@@ -18,6 +18,8 @@
     # know when to stop
 
 def create_matrix(n):
+    '''Creates and returns a grid of n by n size'''
+
     matrix = []
     to_add = []
     
@@ -29,9 +31,32 @@ def create_matrix(n):
     
     return matrix
 
+def print_matrix(matrix):
+    
+    for row in matrix:
+        print(row)
+    print()
+
+def traverse_one_path(n):
+
+    matrix = create_matrix(n)
+    max_index = n
+    r_index = 0
+    d_index = 0
+
+    while r_index < max_index:
+        matrix[d_index][r_index] = 1 #shows current step
+        print_matrix(matrix)
+        matrix[d_index][r_index] = 2 #marks current step as having been visited
+        r_index +=1 #move to next step
+        d_index +=1 
+
+        # This is currently printing out 1 for each nested list's 0 indice
+        # Not sure why that is, as it's not happening in other terminal tests...
 
 
-
+def count_paths(n):
+    pass
 
 
 
