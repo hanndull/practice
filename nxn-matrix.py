@@ -44,12 +44,15 @@ def traverse_one_path(n):
     r_index = 0
     d_index = 0
 
-    while r_index < max_index:
+    while r_index < max_index and d_index < max_index:
         matrix[d_index][r_index] = 1 #shows current step
         print_matrix(matrix)
         matrix[d_index][r_index] = 2 #marks current step as having been visited
-        r_index +=1 #move to next step
-        d_index +=1 
+        
+        if abs(r_index - d_index) == 1:
+            r_index +=1 #move to next step
+        else:
+            d_index +=1 
 
 
 def count_paths(n):
