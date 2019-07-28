@@ -27,7 +27,7 @@ def create_matrix(n):
         to_add.append(0)
     
     for x in range(n):
-        matrix.append(to_add)
+        matrix.append(to_add.copy())
     
     return matrix
 
@@ -50,9 +50,6 @@ def traverse_one_path(n):
         matrix[d_index][r_index] = 2 #marks current step as having been visited
         r_index +=1 #move to next step
         d_index +=1 
-
-        # This is currently printing out 1 for each nested list's 0 indice
-        # Not sure why that is, as it's not happening in other terminal tests...
 
 
 def count_paths(n):
