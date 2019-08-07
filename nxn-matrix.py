@@ -5,7 +5,11 @@
 #[[0, 0, 0],
 # [0, 0, 0],
 # [0, 0, 0]]
+
 # n = 3, 6 ways to go (?)
+# n = 2, 2 ways to go 
+
+# (x^2) - x ??
 
 # smallest sequence used will always either be R + R, D + D, R + D, or D + R
 
