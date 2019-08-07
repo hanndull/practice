@@ -20,11 +20,11 @@ class Node:
             current_node = queue.pop(0)
             
             if current_node.name not in array:
-                array.append(current_node.name)
+                array.append(current_node.name) #Added this in for graphs 
 
             for child in current_node.children:
                 
-                if child.name not in array: #Added this in for purposes of graphs 
+                if child.name not in array: #Added this in for graphs 
                     queue.append(child)
         
         return array
