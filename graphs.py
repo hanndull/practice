@@ -29,6 +29,7 @@ class Node:
         
         return array
 
+
 #----------------------------------------------------------------------------
 # TEST 1 -- tree           
     
@@ -57,6 +58,21 @@ assert h.breadth_first_search([]) == ['Hannah', 'Jason', 'Jan', 'Belinda']
 assert b.breadth_first_search([]) == ['Belinda', 'Hannah', 'Jason', 'Jan']
 
 
+
+# def compare_graphs(node_1, node_2, array=[]):
+#     queue_1 = [node1]
+#     queue_2 = [node2]
+
+#     while queue_1:
+#         current_node_1 = queue_1.pop(0)
+#         current_node_2 = queue_2.pop(0)
+
+#         if current_node.name not in array:
+#             array.append(current_node.name)
+
+#         for child in current_node.children:
+#             if child.name not in array:
+#                 queue
 
 
 
